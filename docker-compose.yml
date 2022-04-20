@@ -3,7 +3,7 @@ version: '3.1'
 services:
   springboot:
     image: dockerhandson/spring-boot-mongo:latest
-    restart: always # This will be ignored if we deploy in docker swarm
+   # restart: always # This will be ignored if we deploy in docker swarm
     environment:
     - MONGO_DB_HOSTNAME=mongo
     - MONGO_DB_USERNAME=devdb
@@ -15,15 +15,15 @@ services:
       - mongo
     networks:
     - springappnetwork  
-    deploy:  # This will be considered only in docker swarm.
-      replicas: 2
-      update_config:
-        parallelism: 1
-        delay: 20s
-      restart_policy:
-        condition: on-failure
-        delay: 10s
-        max_attempts: 5
+    # deploy:  # This will be considered only in docker swarm.
+     # replicas: 2
+      #update_config:
+       # parallelism: 1
+     #   delay: 20s
+    #  restart_policy:
+     #   condition: on-failure
+      #  delay: 10s
+       # max_attempts: 5 
 
   mongo:
     image: mongo
@@ -38,8 +38,8 @@ services:
     
 volumes:
   mongodb:
-    external: true
+    driver: local
     
 networks:
   springappnetwork:
-    external: true
+    driver: local
