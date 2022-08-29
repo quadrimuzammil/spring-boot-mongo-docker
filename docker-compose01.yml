@@ -1,0 +1,8 @@
+version "3.2"
+services:
+  springapp:
+    image: quadrimuzammil/springbootapp:BUILD_NUMBER
+    ports:
+    - 8070:8080
+    deploy:
+      replicas: 2
