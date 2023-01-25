@@ -89,6 +89,17 @@ spec:
     targetPort: 8080
   type: LoadBalancer
 ---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-reg
+spec:
+  containers:
+  - name: springappcontainer
+    image: gcr.io/devops-374009/springapp:1
+  imagePullSecrets:
+  - name: dockersecret
+---
 # Mongo db pod with volumes(HostPath)
 apiVersion: apps/v1
 kind: ReplicaSet
