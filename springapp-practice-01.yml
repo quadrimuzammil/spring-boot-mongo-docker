@@ -61,6 +61,9 @@ spec:
       containers:
       - name: springappcontainer
         image: gcr.io/devops-374009/springapp:1
+        imagePullPolicy: Always
+      imagePullSecrets:
+      - name: the-secret
         ports:
         - containerPort: 8080
         env:
@@ -87,7 +90,7 @@ spec:
   ports:
   - port: 80
     targetPort: 8080
-  type: NodePort
+  type: LoadBalancer
 ---
 # Mongo db pod with volumes(HostPath)
 apiVersion: apps/v1
