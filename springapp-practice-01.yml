@@ -61,9 +61,6 @@ spec:
       containers:
       - name: springappcontainer
         image: gcr.io/devops-374009/springapp:1
-        imagePullPolicy: Always
-      imagePullSecrets:
-      - name: the-secret
         ports:
         - containerPort: 8080
         env:
